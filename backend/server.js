@@ -4,14 +4,16 @@ import express from 'express'
 import cors from 'cors'
 
 const app = express();
+app.use(cors());
+
 app.use(express.json()); // Add this line to parse JSON
 
 dotenv.config();
 
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "pass#67Ts",
+  user: "tanishadamle",
+  password: "HelloWorld23!",
   database: "proj",
 });
 
@@ -28,7 +30,7 @@ app.listen(8080, () => {
 });
 
 app.post("/user", (req, res) => {
-  const sql = "INSERT INTO AdopterApplicant ('name') VALUES (?)";
+  const sql = "INSERT INTO AdopterApplicant (name) VALUES (?)";
   const values = 
     [req.body.name];
   connection.query(sql, values, (err, result) => {
